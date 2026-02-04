@@ -101,7 +101,8 @@ body.is-locked{
 
 /* Hero */
 .hero{
-  padding:20px 4px 22px;
+  /* ✅ (1) 배지 삭제 후 간격 자연스럽게 */
+  padding:20px 4px 14px;
   position:relative;
 }
 .hero__title{
@@ -110,20 +111,6 @@ body.is-locked{
   font-weight:760;
   line-height:1.12;
   letter-spacing:-0.03em;
-}
-.hero__badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:8px 12px;
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:600;
-  color:var(--sub);
-  box-shadow:0 10px 22px rgba(0,0,0,.04);
-  margin-top:10px;
 }
 
 /* Grid */
@@ -196,7 +183,8 @@ body.is-locked{
   display:flex;
   align-items:center;
   gap:14px;
-  padding-bottom:22px;
+  /* ✅ (2) 상단 타이틀-컨텐츠 간격 줄이기 */
+  padding-bottom:14px;
 }
 .pageTitle{
   font-size:18px;
@@ -239,6 +227,8 @@ body.is-locked{
 .section-mt{margin-top:32px;}
 .section-mt-lg{margin-top:48px;}
 .section-mt-sm{margin-top:12px;}
+/* ✅ (2) schedule/worship 등에서 쓰는 중간 여백 */
+.section-mt-md{margin-top:20px;}
 
 /* Panel */
 .panel{
@@ -265,7 +255,7 @@ body.is-locked{
   flex-wrap:wrap;
 }
 
-/* Buttons (✅ 텍스트 크기 통일) */
+/* Buttons */
 .btn{
   border:1px solid var(--line2);
   background:#fff;
@@ -273,8 +263,8 @@ body.is-locked{
   border-radius:999px;
   padding:10px 14px;
   font-weight:650;
-  font-size:14px;          /* ✅ 통일 */
-  line-height:1;           /* ✅ 통일 */
+  font-size:14px;
+  line-height:1;
   cursor:pointer;
   box-shadow:0 10px 18px rgba(0,0,0,.04);
 }
@@ -347,13 +337,13 @@ body.is-locked{
   margin:0;
 }
 
-/* Worship + QT */
-.refLine{
-  font-size:13px;
-  color:var(--muted);
-  font-weight:650;
-  margin-top:6px;
+/* ✅ (3) 예배 박스 간격 자연스럽게 */
+.worshipList{
+  display:grid;
+  gap:14px;
 }
+
+/* Worship + QT */
 .quoteTitle{
   font-size:15px;
   font-weight:800;
@@ -540,7 +530,7 @@ body.is-locked{
 }
 .sheet__link:hover{opacity:.7;}
 
-/* Fullscreen Viewer */
+/* ✅ (5) Fullscreen Viewer: 쫀쫀한 스냅 + 짤림 방지 */
 .viewer{
   position:fixed;
   inset:0;
@@ -563,7 +553,7 @@ body.is-locked{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:14px 14px 8px;
+  padding:14px 14px 10px;
   color:#fff;
 }
 .viewer__counter{
@@ -580,34 +570,37 @@ body.is-locked{
   font-size:18px;
   cursor:pointer;
 }
+
+/* rail */
 .viewer__rail{
   flex:1;
   display:flex;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
   -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  scrollbar-width:none;
 }
+.viewer__rail::-webkit-scrollbar{display:none;}
+
 .viewer__slide{
   flex:0 0 100%;
   width:100%;
   scroll-snap-align:start;
+  scroll-snap-stop:always;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:10px 14px 18px;
 }
+
+/* 이미지가 위아래 안 잘리도록: top 영역 제외한 높이에 맞춰 축소 */
 .viewer__slide img{
   max-width:100%;
-  max-height:86vh;
+  max-height:calc(100vh - 86px);
   height:auto;
   width:auto;
   object-fit:contain;
-  background:transparent;
   border-radius:14px;
-}
-.viewer__hint{
-  text-align:center;
-  color:rgba(255,255,255,.85);
-  font-size:12px;
-  padding:10px 0 16px;
 }
