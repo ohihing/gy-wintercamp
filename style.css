@@ -125,13 +125,6 @@ body.is-locked{
   box-shadow:0 10px 22px rgba(0,0,0,.04);
   margin-top:10px;
 }
-.hero__desc{
-  margin:18px 0 0;
-  font-size:17px;
-  color:var(--sub);
-  font-weight:500;
-  line-height:1.75;
-}
 
 /* Grid */
 .grid{
@@ -176,12 +169,6 @@ body.is-locked{
   font-size:19px;
   font-weight:650;
   letter-spacing:-0.02em;
-}
-.banner__desc{
-  margin-top:6px;
-  font-size:14px;
-  color:var(--sub);
-  font-weight:500;
 }
 .banner__icon{
   font-size:20px;
@@ -251,6 +238,7 @@ body.is-locked{
 /* Spacing */
 .section-mt{margin-top:32px;}
 .section-mt-lg{margin-top:48px;}
+.section-mt-sm{margin-top:12px;}
 
 /* Panel */
 .panel{
@@ -277,7 +265,7 @@ body.is-locked{
   flex-wrap:wrap;
 }
 
-/* Buttons */
+/* Buttons (✅ 텍스트 크기 통일) */
 .btn{
   border:1px solid var(--line2);
   background:#fff;
@@ -285,6 +273,8 @@ body.is-locked{
   border-radius:999px;
   padding:10px 14px;
   font-weight:650;
+  font-size:14px;          /* ✅ 통일 */
+  line-height:1;           /* ✅ 통일 */
   cursor:pointer;
   box-shadow:0 10px 18px rgba(0,0,0,.04);
 }
@@ -297,7 +287,9 @@ body.is-locked{
 .fileBtn{
   display:inline-flex;
   align-items:center;
+  justify-content:center;
   gap:8px;
+  white-space:nowrap;
 }
 .fileBtn input{display:none;}
 
@@ -318,7 +310,7 @@ body.is-locked{
 .sheet__foot{margin-top:auto; padding-top:18px; border-top:1px solid var(--line);}
 
 /* Schedule */
-.dayTabs{display:grid; gap:12px;}
+.scheduleWrap{display:grid; gap:12px;}
 .dayCard{
   background:#fff;
   border:1px solid var(--line);
@@ -326,20 +318,13 @@ body.is-locked{
   overflow:hidden;
   box-shadow:0 10px 22px rgba(0,0,0,.04);
 }
-.dayCard > summary{
-  list-style:none;
-  cursor:pointer;
+.dayCard__head{
   padding:14px 14px;
   font-weight:750;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  background:rgba(0,0,0,.015);
 }
-.dayCard > summary::-webkit-details-marker{display:none;}
-.dayCard > summary::after{content:"＋"; color:var(--muted); font-size:16px;}
-.dayCard[open] > summary::after{content:"－";}
 .timeTable{
-  border-top:1px solid var(--line);
   padding:10px 12px 12px;
 }
 .timeRow{
@@ -361,15 +346,55 @@ body.is-locked{
   font-weight:750;
   margin:0;
 }
-.itemDesc{
-  margin:4px 0 0;
-  font-size:13px;
-  color:var(--sub);
-  line-height:1.65;
-}
 
-/* Q&A + QT */
-.qaList,.qtList{display:grid; gap:12px;}
+/* Worship + QT */
+.refLine{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:650;
+  margin-top:6px;
+}
+.quoteTitle{
+  font-size:15px;
+  font-weight:800;
+  color:var(--text);
+}
+.accordion{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  overflow:hidden;
+}
+.accordion > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px 12px;
+  font-weight:750;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:var(--text);
+}
+.accordion > summary::-webkit-details-marker{display:none;}
+.accordion > summary::after{
+  content:"＋";
+  color:var(--muted);
+  font-size:16px;
+}
+.accordion[open] > summary::after{content:"－";}
+.verseBlock{
+  border-top:1px solid var(--line);
+  padding:12px 12px 14px;
+  color:var(--sub);
+  line-height:1.8;
+}
+.verseBlock p{
+  margin:0 0 10px;
+}
+.verseBlock p:last-child{margin-bottom:0;}
+
+/* Q&A + QT input */
+.qaList{display:grid; gap:12px;}
 .noteCard{
   background:#fff;
   border:1px solid var(--line);
