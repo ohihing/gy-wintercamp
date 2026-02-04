@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>금촌교회 청년부 · 동계수련회 온라인 액팅북</title>
-  <meta name="description" content="금촌교회 청년부 동계수련회 온라인 액팅북(기기 저장)" />
+  <title>금촌교회 청년부 · 2026 동계수련회</title>
+  <meta name="description" content="금촌교회 청년부 2026 동계수련회 안내 (기기 저장)" />
   <meta name="theme-color" content="#ffffff" />
 
   <!-- Pretendard -->
@@ -38,14 +38,14 @@
       <nav class="sheet__nav">
         <a class="sheet__link" href="#home" data-route>홈</a>
         <a class="sheet__link" href="#schedule" data-route>수련회 일정표</a>
-        <a class="sheet__link" href="#sermon" data-route>설교 자료 & Q&A</a>
-        <a class="sheet__link" href="#praise" data-route>기도회 찬양 악보</a>
-        <a class="sheet__link" href="#qt" data-route>둘째 날 오전 QT</a>
+        <a class="sheet__link" href="#worship" data-route>예배</a>
+        <a class="sheet__link" href="#praise" data-route>찬양 악보</a>
+        <a class="sheet__link" href="#qt" data-route>QT</a>
       </nav>
 
       <div class="sheet__foot">
         <div class="miniNote">
-          ✍️ 입력한 글은 <b>이 기기(브라우저)</b>에만 저장됩니다.<br />
+          ✍️ QT에 입력한 글은 <b>이 기기(브라우저)</b>에만 저장됩니다.<br />
           브라우저 데이터 삭제/폰 교체 시 사라질 수 있어요.
         </div>
       </div>
@@ -57,64 +57,42 @@
     <!-- HOME -->
     <section class="view is-active" data-view="home" id="home">
       <div class="hero">
-        <h1 class="hero__title" id="retreatTitle">동계수련회 안내</h1>
-        <div class="hero__badge" id="retreatBadge">이번 수련회</div>
-        <p class="hero__desc" id="retreatSubtitle">
-          안내와 실천 기록을 한 곳에 모아두었어요.<br />
-          아래 메뉴로 이동해 주세요.
-        </p>
+        <h1 class="hero__title" id="retreatTitle">2026 동계수련회</h1>
+        <div class="hero__badge" id="retreatBadge">금촌교회 청년부</div>
+        <!-- ✅ 메인 설명 카피 삭제 (요청 반영) -->
       </div>
 
       <div class="grid">
         <a class="banner scroll-item" href="#schedule" data-route>
           <div class="banner__content">
             <div class="banner__title">수련회 일정표</div>
-            <div class="banner__desc">타임테이블 / 프로그램</div>
           </div>
           <div class="banner__icon">→</div>
         </a>
 
-        <a class="banner scroll-item" href="#sermon" data-route>
+        <a class="banner scroll-item" href="#worship" data-route>
           <div class="banner__content">
-            <div class="banner__title">설교 자료 & Q&A</div>
-            <div class="banner__desc">텍스트 + 개인 답변 저장</div>
+            <div class="banner__title">예배</div>
           </div>
           <div class="banner__icon">→</div>
         </a>
 
         <a class="banner scroll-item" href="#praise" data-route>
           <div class="banner__content">
-            <div class="banner__title">기도회 찬양 악보</div>
-            <div class="banner__desc">최대 20장 / 전체화면 보기</div>
+            <div class="banner__title">찬양 악보</div>
           </div>
           <div class="banner__icon">→</div>
         </a>
 
         <a class="banner scroll-item" href="#qt" data-route>
           <div class="banner__content">
-            <div class="banner__title">둘째 날 오전 QT</div>
-            <div class="banner__desc">묵상 & 적용 / 개인 저장</div>
+            <div class="banner__title">QT</div>
           </div>
           <div class="banner__icon">→</div>
         </a>
       </div>
 
-      <div class="panel section-mt">
-        <div class="panel__title">개인 기록 안내</div>
-        <div class="panel__body">
-          Q&A / QT에 작성한 내용은 <b>서버로 전송되지 않고</b>, <b>이 기기</b>에만 저장됩니다.<br />
-          <span class="muted">브라우저 데이터 삭제(쿠키/기록 삭제) 시 내용이 사라질 수 있어요.</span>
-        </div>
-
-        <div class="panel__actions">
-          <button class="btn btn--ghost" type="button" id="btnExport">내 기록 내보내기</button>
-          <label class="btn btn--ghost fileBtn">
-            기록 가져오기
-            <input type="file" id="importFile" accept="application/json" />
-          </label>
-          <button class="btn btn--danger" type="button" id="btnReset">내 기록 초기화</button>
-        </div>
-      </div>
+      <!-- ✅ 메인 하단 '개인 기록 안내' 박스 삭제 (요청 반영) -->
     </section>
 
     <!-- SCHEDULE -->
@@ -125,37 +103,23 @@
       </div>
 
       <div class="pageContent anim-fadein">
-        <p class="leadDesc" id="scheduleIntro">타임테이블입니다. (필요 시 매주/매년 수정 가능)</p>
-
-        <div class="dayTabs section-mt" id="scheduleDays">
+        <!-- ✅ 부연 설명 텍스트 삭제 -->
+        <div class="scheduleWrap section-mt" id="scheduleWrap">
           <!-- JS render -->
         </div>
       </div>
     </section>
 
-    <!-- SERMON -->
-    <section class="view" data-view="sermon" id="sermon">
+    <!-- WORSHIP -->
+    <section class="view" data-view="worship" id="worship">
       <div class="pageHead">
         <button class="backBtn" type="button" data-back aria-label="뒤로">←</button>
-        <div class="pageTitle">설교 자료 & Q&A</div>
+        <div class="pageTitle">예배</div>
       </div>
 
       <div class="pageContent anim-fadein">
-        <div class="panel">
-          <div class="panel__title" id="sermonTitle">설교 제목</div>
-          <div class="panel__body" id="sermonBody">
-            <!-- JS render -->
-          </div>
-        </div>
-
-        <div class="section-mt">
-          <div class="secTitle">Q&A (개인 기록)</div>
-          <p class="leadDesc">
-            질문마다 자유롭게 작성해 주세요. <span class="muted">저장 버튼 없이도 자동 저장됩니다.</span>
-          </p>
-          <div class="qaList section-mt" id="qaList">
-            <!-- JS render -->
-          </div>
+        <div class="worshipList section-mt" id="worshipList">
+          <!-- JS render -->
         </div>
       </div>
     </section>
@@ -164,18 +128,17 @@
     <section class="view" data-view="praise" id="praise">
       <div class="pageHead">
         <button class="backBtn" type="button" data-back aria-label="뒤로">←</button>
-        <div class="pageTitle">기도회 찬양 악보</div>
+        <div class="pageTitle">찬양 악보</div>
       </div>
 
       <div class="pageContent anim-fadein">
         <p class="leadDesc">
-          악보는 아래에서 확인할 수 있어요.<br />
-          <span class="muted">이미지를 누르면 전체화면으로 크게 보고, 좌우로 넘길 수 있습니다.</span>
+          이미지를 누르면 전체화면으로 크게 보고, 좌우로 넘길 수 있습니다.
         </p>
 
         <div class="emptyState section-mt" id="praiseEmpty">
           아직 악보가 등록되지 않았어요.<br />
-          <span class="muted">assets 폴더에 업로드 후 script.js의 praiseFiles에 경로를 추가하면 표시됩니다.</span>
+          <span class="muted">assets 폴더 업로드 후 script.js의 praiseFiles에 경로를 추가하면 표시됩니다.</span>
         </div>
 
         <div class="scoreFeed section-mt" id="praiseFeed" hidden>
@@ -188,22 +151,53 @@
     <section class="view" data-view="qt" id="qt">
       <div class="pageHead">
         <button class="backBtn" type="button" data-back aria-label="뒤로">←</button>
-        <div class="pageTitle">둘째 날 오전 QT</div>
+        <div class="pageTitle">QT</div>
       </div>
 
       <div class="pageContent anim-fadein">
-        <p class="leadDesc">
-          느낀 점을 적어보세요. <span class="muted">이 기기에만 저장됩니다.</span>
-        </p>
+        <div class="panel">
+          <div class="panel__title" id="qtTitle">주님이 계시는 푯대를 향하여</div>
+          <div class="panel__body">
+            <div class="refLine" id="qtRef">빌립보서 3:7-14</div>
 
-        <div class="qtList section-mt" id="qtList">
-          <!-- JS render -->
+            <details class="accordion section-mt-sm" id="qtPassage">
+              <summary>본문 펼치기</summary>
+              <div class="verseBlock" id="qtVerses">
+                <!-- JS render -->
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="section-mt">
+          <div class="secTitle">나눔 질문들</div>
+          <div class="qaList section-mt" id="qtQuestions">
+            <!-- JS render -->
+          </div>
+        </div>
+
+        <!-- ✅ '개인 기록 안내' + 기능 버튼들을 QT 최하단으로 이동 -->
+        <div class="panel section-mt-lg">
+          <div class="panel__title">개인 기록 안내</div>
+          <div class="panel__body">
+            QT에 작성한 내용은 <b>서버로 전송되지 않고</b>, <b>이 기기</b>에만 저장됩니다.<br />
+            <span class="muted">브라우저 데이터 삭제(쿠키/기록 삭제) 시 내용이 사라질 수 있어요.</span>
+          </div>
+
+          <div class="panel__actions">
+            <button class="btn btn--ghost" type="button" id="btnExport">내 기록 내보내기</button>
+            <label class="btn btn--ghost fileBtn">
+              기록 가져오기
+              <input type="file" id="importFile" accept="application/json" />
+            </label>
+            <button class="btn btn--danger" type="button" id="btnReset">내 기록 초기화</button>
+          </div>
         </div>
       </div>
     </section>
 
     <footer class="footer section-mt-lg">
-      © 금촌교회 청년부 · 동계수련회 온라인 액팅북
+      © 금촌교회 청년부 · 2026 동계수련회
     </footer>
   </main>
 
