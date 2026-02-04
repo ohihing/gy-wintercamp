@@ -72,10 +72,16 @@ const RETREAT_DATA = {
   // 이미지 업로드 후 아래 배열에 경로만 추가하면 자동으로 표시 + 전체화면 슬라이더 동작
   // 예: "assets/001.JPG", "assets/002.JPG" ...
   praiseFiles: [
-  "assets/001.JPG",
-  "assets/002.JPG",
-  "assets/003.JPG",
-  "assets/004.PNG",
+  "assets/001.jpg",
+  "assets/002.jpg",
+  "assets/003.jpg",
+  "assets/004.jpg",
+  "assets/005.jpg",
+  "assets/006.jpg",
+  "assets/007.jpg",
+  "assets/008.jpg",
+  "assets/009.jpg",
+  "assets/010.jpg",
   ],
 };
 
