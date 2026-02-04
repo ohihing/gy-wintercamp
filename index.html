@@ -58,8 +58,7 @@
     <section class="view is-active" data-view="home" id="home">
       <div class="hero">
         <h1 class="hero__title" id="retreatTitle">2026 동계수련회</h1>
-        <div class="hero__badge" id="retreatBadge">금촌교회 청년부</div>
-        <!-- ✅ 메인 설명 카피 삭제 (요청 반영) -->
+        <!-- ✅ (1) 원형 배지(hero__badge) 삭제 -->
       </div>
 
       <div class="grid">
@@ -91,8 +90,6 @@
           <div class="banner__icon">→</div>
         </a>
       </div>
-
-      <!-- ✅ 메인 하단 '개인 기록 안내' 박스 삭제 (요청 반영) -->
     </section>
 
     <!-- SCHEDULE -->
@@ -103,8 +100,8 @@
       </div>
 
       <div class="pageContent anim-fadein">
-        <!-- ✅ 부연 설명 텍스트 삭제 -->
-        <div class="scheduleWrap section-mt" id="scheduleWrap">
+        <!-- ✅ (2) 상단 여백 줄이기: section-mt → section-mt-md -->
+        <div class="scheduleWrap section-mt-md" id="scheduleWrap">
           <!-- JS render -->
         </div>
       </div>
@@ -118,7 +115,8 @@
       </div>
 
       <div class="pageContent anim-fadein">
-        <div class="worshipList section-mt" id="worshipList">
+        <!-- ✅ (2) 상단 여백 줄이기 + (3) 박스 간격은 CSS에서 grid gap으로 -->
+        <div class="worshipList section-mt-md" id="worshipList">
           <!-- JS render -->
         </div>
       </div>
@@ -136,12 +134,12 @@
           이미지를 누르면 전체화면으로 크게 보고, 좌우로 넘길 수 있습니다.
         </p>
 
-        <div class="emptyState section-mt" id="praiseEmpty">
+        <div class="emptyState section-mt-md" id="praiseEmpty">
           아직 악보가 등록되지 않았어요.<br />
           <span class="muted">assets 폴더 업로드 후 script.js의 praiseFiles에 경로를 추가하면 표시됩니다.</span>
         </div>
 
-        <div class="scoreFeed section-mt" id="praiseFeed" hidden>
+        <div class="scoreFeed section-mt-md" id="praiseFeed" hidden>
           <!-- JS render -->
         </div>
       </div>
@@ -158,10 +156,9 @@
         <div class="panel">
           <div class="panel__title" id="qtTitle">주님이 계시는 푯대를 향하여</div>
           <div class="panel__body">
-            <div class="refLine" id="qtRef">빌립보서 3:7-14</div>
-
+            <!-- ✅ (4) refLine 제거, summary에 성경구절 표시 -->
             <details class="accordion section-mt-sm" id="qtPassage">
-              <summary>본문 펼치기</summary>
+              <summary id="qtSummary">빌립보서 3:7-14</summary>
               <div class="verseBlock" id="qtVerses">
                 <!-- JS render -->
               </div>
@@ -171,12 +168,12 @@
 
         <div class="section-mt">
           <div class="secTitle">나눔 질문들</div>
-          <div class="qaList section-mt" id="qtQuestions">
+          <div class="qaList section-mt-md" id="qtQuestions">
             <!-- JS render -->
           </div>
         </div>
 
-        <!-- ✅ '개인 기록 안내' + 기능 버튼들을 QT 최하단으로 이동 -->
+        <!-- 하단 개인기록 안내 + 기능버튼 -->
         <div class="panel section-mt-lg">
           <div class="panel__title">개인 기록 안내</div>
           <div class="panel__body">
@@ -215,7 +212,7 @@
         <!-- JS inject -->
       </div>
 
-      <div class="viewer__hint">좌우로 넘기기 ↔</div>
+      <!-- ✅ (5) '좌우로 넘기기' 힌트 텍스트 제거 -->
     </div>
   </div>
 
