@@ -1,87 +1,111 @@
 // ===========================================
-// 금촌교회 청년부 · 동계수련회 온라인 액팅북
+// 금촌교회 청년부 · 2026 동계수련회
 // (정적 사이트 + localStorage 개인 저장)
 // ===========================================
 
 /**
  * ✅ 운영자가 수정하는 곳 (여기만 바꾸면 됨)
- * - title/badge/subtitle
- * - scheduleDays (타임테이블)
- * - sermon (텍스트)
- * - qaQuestions / qtPrompts
- * - praiseFiles (악보 이미지: 최대 20장 정도)
  */
 const RETREAT_DATA = {
-  storagePrefix: "gy-retreatbook-2026-winter", // 연도/수련회 바뀔 때 바꿔주면 이전 기록과 분리됨
+  storagePrefix: "gy-retreatbook-2026-winter",
 
-  title: "동계수련회 온라인 액팅북",
-  badge: "2026 동계수련회",
-  subtitle: "안내와 개인 기록을 한 곳에 모아두었어요.\n각 페이지에서 자유롭게 작성해 주세요.",
+  homeTitle: "2026 동계수련회",
+  homeBadge: "금촌교회 청년부",
 
-  scheduleIntro: "타임테이블입니다. 상황에 따라 조정될 수 있어요.",
-
-  scheduleDays: [
+  schedule: [
     {
-      label: "첫째 날",
+      label: "1일차",
       items: [
-        { time: "12:00", title: "교회 집합", desc: "예배실로 모여 주세요." },
-        { time: "12:30", title: "이동", desc: "출발 및 안전 안내" },
-        { time: "15:00", title: "오리엔테이션", desc: "일정/규칙/조 편성" },
-        { time: "16:00", title: "집회 1", desc: "찬양 & 말씀" },
-        { time: "18:00", title: "저녁", desc: "식사 및 휴식" },
-        { time: "20:00", title: "기도회", desc: "찬양과 기도" },
-        { time: "22:00", title: "나눔", desc: "조별 나눔 / 개인 기록" },
+        { time: "12:00", title: "교회 집합 및 출발" },
+        { time: "12:30", title: "김포 사계절 썰매장" },
+        { time: "15:30", title: "숙소 도착 및 개회 예배와 OT" },
+        { time: "17:00", title: "저녁식사" },
+        { time: "19:00", title: "저녁예배" },
+        { time: "21:00", title: "개인정비" },
+        { time: "22:00", title: "마무리 및 취침" },
       ],
     },
     {
-      label: "둘째 날",
+      label: "2일차",
       items: [
-        { time: "07:30", title: "기상", desc: "" },
-        { time: "08:00", title: "아침", desc: "" },
-        { time: "09:00", title: "오전 QT", desc: "이 페이지의 QT 섹션을 활용해보세요." },
-        { time: "10:30", title: "집회 2", desc: "찬양 & 말씀" },
-        { time: "12:00", title: "정리/점심", desc: "" },
-        { time: "13:30", title: "마무리", desc: "귀가" },
+        { time: "0:00~7:00", title: "취침" },
+        { time: "8:00", title: "개인정비 및 아침 식사" },
+        { time: "9:00", title: "아침 QT 및 닫는 예배" },
+        { time: "10:00", title: "청소 및 정리 후 퇴실" },
+        { time: "11:00~12:00", title: "점심 식사" },
+        { time: "13:00", title: "교회로" },
       ],
     },
   ],
 
-  sermonTitle: "설교 제목(예시) · 온전하게 하시는 예수님을 보라",
-  sermonBody: [
-    "여기에 설교 핵심 내용을 넣어주세요.",
-    "• 포인트 1: ...",
-    "• 포인트 2: ...",
-    "• 적용: ...",
+  worship: [
+    {
+      label: "여는 예배",
+      sermonTitle: "담력은 얻어 모이기를 힘쓰라",
+      ref: "히브리서 10장 19~25절",
+      verses: [
+        "19. 그러므로 형제들아 우리가 예수의 피를 힘입어 성소에 들어갈 담력을 얻었나니",
+        "20. 그 길은 우리를 위하여 휘장 가운데로 열어 놓으신 새로운 살 길이요 휘장은 곧 그의 육체니라",
+        "21. 또 하나님의 집 다스리는 큰 제사장이 계시매",
+        "22. 우리가 마음에 뿌림을 받아 악한 양심으로부터 벗어나고 몸은 맑은 물로 씻음을 받았으니 참 마음과 온전한 믿음으로 하나님께 나아가자",
+        "23. 또 약속하신 이는 미쁘시니 우리가 믿는 도리의 소망을 움직이지 말며 굳게 잡고",
+        "24. 서로 돌아보아 사랑과 선행을 격려하며",
+        "25. 모이기를 폐하는 어떤 사람들의 습관과 같이 하지 말고 오직 권하여 그 날이 가까움을 볼수록 더욱 그리하자. 아멘.",
+      ],
+    },
+    {
+      label: "저녁 예배",
+      sermonTitle: "믿음의 증거",
+      ref: "히브리서 11장 1~2절",
+      verses: [
+        "1. 믿음은 바라는 것들의 실상이요 보이지 않는 것들의 증거니",
+        "2. 선진들이 이로써 증거를 얻었느니라. 아멘.",
+      ],
+    },
+    {
+      label: "닫는 예배",
+      sermonTitle: "온전하게 하시는 예수를 보라",
+      ref: "히브리서 12장 1~3절",
+      verses: [
+        "1. 이러므로 우리에게 구름 같이 둘러싼 허다한 증인들이 있으니 모든 무거운 것과 얽매이기 쉬운 죄를 벗어 버리고 인내로써 우리 앞에 당한 경주를 하며",
+        "2. 믿음의 주요 또 온전하게 하시는 이인 예수를 바라보자 그는 그 앞에 있는 기쁨을 위하여 십자가를 참으사 부끄러움을 개의치 아니하시더니 하나님 보좌 우편에 앉으셨느니라",
+        "3. 너희가 피곤하여 낙심하지 않기 위하여 죄인들이 이같이 자기에게 거역한 일을 참으신 이를 생각하라. 아멘.",
+      ],
+    },
   ],
 
-  qaQuestions: [
-    "오늘 말씀에서 마음에 남는 한 문장은?",
-    "내 삶에서 지금 ‘믿음’이 필요한 영역은?",
-    "내가 붙잡고 있던 ‘두려움/걱정’을 한 가지 내려놓는다면?",
-    "이번 수련회에서 하나님께 바라는 것은?",
-  ],
+  qt: {
+    title: "주님이 계시는 푯대를 향하여",
+    ref: "빌립보서 3:7-14",
+    verses: [
+      "7. 그러나 무엇이든지 내게 유익하던 것을 내가 그리스도를 위하여 다 해로 여길뿐더러",
+      "8. 또한 모든 것을 해로 여김은 내 주 그리스도 예수를 아는 지식이 가장 고상하기 때문이라 내가 그를 위하여 모든 것을 잃어버리고 배설물로 여김은 그리스도를 얻고",
+      "9. 그 안에서 발견되려 함이니 내가 가진 의는 율법에서 난 것이 아니요 오직 그리스도를 믿음으로 말미암은 것이니 곧 믿음으로 하나님께로부터 난 의라",
+      "10. 내가 그리스도와 그 부활의 권능과 그 고난에 참여함을 알고자 하여 그의 죽으심을 본받아",
+      "11. 어떻게 해서든지 죽은 자 가운데서 부활에 이르려 하노니",
+      "12. 내가 이미 얻었다 함도 아니요 온전히 이루었다 함도 아니라 오직 내가 그리스도 예수께 잡힌 바 된 그것을 잡으려고 달려가노라",
+      "13. 형제들아 나는 아직 내가 잡은 줄로 여기지 아니하고 오직 한 일 즉 뒤에 있는 것은 잊어버리고 앞에 있는 것을 잡으려고",
+      "14. 푯대를 향하여 그리스도 예수 안에서 하나님이 위에서 부르신 부름의 상을 위하여 달려가노라.",
+    ],
+    questions: [
+      "내가 좋아하고 내 삶에 도움이 되고 유익하게 하는 것이지만, 주님을 바라보는데 해가 되는 것들은 무엇입니까? (7-9절)",
+      "내가 이제는 뒤에 남겨 두어야 할 나의 의가 무엇입니까? (12-14절)",
+      "온전케 하시는 주님을 향해, 그 푯대를 향해 달려가기 위한 나의 결단과 기도 제목을 함께 나누어봅시다.",
+    ],
+  },
 
-  qtPrompts: [
-    { title: "1) 오늘 말씀/본문", hint: "본문을 적거나, 핵심 구절을 적어도 좋아요." },
-    { title: "2) 느낀 점", hint: "내 마음에 어떤 울림이 있었나요?" },
-    { title: "3) 적용(실천) 1가지", hint: "오늘/이번 주에 바로 할 수 있는 작은 실천" },
-    { title: "4) 기도제목", hint: "기도제목 1~2가지" },
-  ],
-
-  // ✅ 악보 이미지 경로 (assets 폴더)
-  // 이미지 업로드 후 아래 배열에 경로만 추가하면 자동으로 표시 + 전체화면 슬라이더 동작
-  // 예: "assets/001.JPG", "assets/002.JPG" ...
+  // ✅ 찬양 악보 (assets 폴더 / 001.jpg ~ 010.jpg, 소문자 확장자)
   praiseFiles: [
-  "assets/001.jpg",
-  "assets/002.jpg",
-  "assets/003.jpg",
-  "assets/004.jpg",
-  "assets/005.jpg",
-  "assets/006.jpg",
-  "assets/007.jpg",
-  "assets/008.jpg",
-  "assets/009.jpg",
-  "assets/010.jpg",
+    "assets/001.jpg",
+    "assets/002.jpg",
+    "assets/003.jpg",
+    "assets/004.jpg",
+    "assets/005.jpg",
+    "assets/006.jpg",
+    "assets/007.jpg",
+    "assets/008.jpg",
+    "assets/009.jpg",
+    "assets/010.jpg",
   ],
 };
 
@@ -97,22 +121,15 @@ const closeMenuBackdrop = document.getElementById("closeMenu");
 const closeMenuBtn = document.getElementById("closeMenuBtn");
 const topbar = document.querySelector(".js-topbar");
 
-// home targets
+// home
 const retreatTitle = document.getElementById("retreatTitle");
 const retreatBadge = document.getElementById("retreatBadge");
-const retreatSubtitle = document.getElementById("retreatSubtitle");
 
 // schedule
-const scheduleIntro = document.getElementById("scheduleIntro");
-const scheduleDays = document.getElementById("scheduleDays");
+const scheduleWrap = document.getElementById("scheduleWrap");
 
-// sermon
-const sermonTitle = document.getElementById("sermonTitle");
-const sermonBody = document.getElementById("sermonBody");
-
-// qa / qt
-const qaList = document.getElementById("qaList");
-const qtList = document.getElementById("qtList");
+// worship
+const worshipList = document.getElementById("worshipList");
 
 // praise
 const praiseFeed = document.getElementById("praiseFeed");
@@ -125,7 +142,13 @@ const viewerCounter = document.getElementById("viewerCounter");
 const viewerCloseBg = document.getElementById("viewerCloseBg");
 const viewerCloseBtn = document.getElementById("viewerCloseBtn");
 
-// tools
+// qt
+const qtTitle = document.getElementById("qtTitle");
+const qtRef = document.getElementById("qtRef");
+const qtVerses = document.getElementById("qtVerses");
+const qtQuestions = document.getElementById("qtQuestions");
+
+// tools (QT 하단에 위치)
 const btnReset = document.getElementById("btnReset");
 const btnExport = document.getElementById("btnExport");
 const importFile = document.getElementById("importFile");
@@ -251,47 +274,63 @@ function nowStamp() {
 // Render
 // -------------------------------
 function renderHome() {
-  if (retreatTitle) retreatTitle.textContent = RETREAT_DATA.title || "동계수련회 안내";
-  if (retreatBadge) retreatBadge.textContent = RETREAT_DATA.badge || "수련회";
-  if (retreatSubtitle) retreatSubtitle.innerHTML =
-    (RETREAT_DATA.subtitle || "").replaceAll("\n", "<br />");
+  if (retreatTitle) retreatTitle.textContent = RETREAT_DATA.homeTitle || "동계수련회";
+  if (retreatBadge) retreatBadge.textContent = RETREAT_DATA.homeBadge || "";
 }
 
 function renderSchedule() {
-  if (scheduleIntro) scheduleIntro.textContent = RETREAT_DATA.scheduleIntro || "";
-  if (!scheduleDays) return;
+  if (!scheduleWrap) return;
 
-  scheduleDays.innerHTML = "";
-  (RETREAT_DATA.scheduleDays || []).forEach((day, idx) => {
-    const details = document.createElement("details");
-    details.className = "dayCard";
-    if (idx === 0) details.open = true;
+  scheduleWrap.innerHTML = "";
+  (RETREAT_DATA.schedule || []).forEach((day) => {
+    const card = document.createElement("div");
+    card.className = "dayCard";
 
     const rows = (day.items || []).map((it) => `
       <div class="timeRow">
         <div class="time">${escapeHTML(it.time || "")}</div>
         <div>
           <p class="itemTitle">${escapeHTML(it.title || "")}</p>
-          ${it.desc ? `<p class="itemDesc">${escapeHTML(it.desc)}</p>` : ""}
         </div>
       </div>
     `).join("");
 
-    details.innerHTML = `
-      <summary>${escapeHTML(day.label || `Day ${idx + 1}`)}</summary>
+    card.innerHTML = `
+      <div class="dayCard__head">${escapeHTML(day.label || "")}</div>
       <div class="timeTable">${rows}</div>
     `;
-    scheduleDays.appendChild(details);
+
+    scheduleWrap.appendChild(card);
   });
 }
 
-function renderSermon() {
-  if (sermonTitle) sermonTitle.textContent = RETREAT_DATA.sermonTitle || "설교";
-  if (sermonBody) {
-    sermonBody.innerHTML = (RETREAT_DATA.sermonBody || [])
-      .map(line => `<div>${escapeHTML(line)}</div>`)
-      .join("");
-  }
+function renderWorship() {
+  if (!worshipList) return;
+  worshipList.innerHTML = "";
+
+  (RETREAT_DATA.worship || []).forEach((svc) => {
+    const panel = document.createElement("div");
+    panel.className = "panel";
+
+    const verseHtml = (svc.verses || []).map(v => `<p>${escapeHTML(v)}</p>`).join("");
+
+    panel.innerHTML = `
+      <div class="panel__title">${escapeHTML(svc.label || "예배")}</div>
+      <div class="panel__body">
+        <div class="quoteTitle">"${escapeHTML(svc.sermonTitle || "")}"</div>
+        <div class="refLine">${escapeHTML(svc.ref || "")}</div>
+
+        <details class="accordion section-mt-sm">
+          <summary>본문 펼치기</summary>
+          <div class="verseBlock">
+            ${verseHtml}
+          </div>
+        </details>
+      </div>
+    `;
+
+    worshipList.appendChild(panel);
+  });
 }
 
 function makeNoteCard({ section, id, question, placeholder }) {
@@ -327,34 +366,29 @@ function makeNoteCard({ section, id, question, placeholder }) {
   return card;
 }
 
-function renderQA() {
-  if (!qaList) return;
-  qaList.innerHTML = "";
-  (RETREAT_DATA.qaQuestions || []).forEach((q, i) => {
-    qaList.appendChild(
-      makeNoteCard({
-        section: "qa",
-        id: `q${i + 1}`,
-        question: `Q${i + 1}. ${q}`,
-        placeholder: "내 답변을 적어보세요.",
-      })
-    );
-  });
-}
-
 function renderQT() {
-  if (!qtList) return;
-  qtList.innerHTML = "";
-  (RETREAT_DATA.qtPrompts || []).forEach((p, i) => {
-    qtList.appendChild(
-      makeNoteCard({
-        section: "qt",
-        id: `p${i + 1}`,
-        question: p.title || `Prompt ${i + 1}`,
-        placeholder: p.hint || "작성해 주세요.",
-      })
-    );
-  });
+  if (qtTitle) qtTitle.textContent = RETREAT_DATA.qt?.title || "QT";
+  if (qtRef) qtRef.textContent = RETREAT_DATA.qt?.ref || "";
+
+  if (qtVerses) {
+    qtVerses.innerHTML = (RETREAT_DATA.qt?.verses || [])
+      .map(v => `<p>${escapeHTML(v)}</p>`)
+      .join("");
+  }
+
+  if (qtQuestions) {
+    qtQuestions.innerHTML = "";
+    (RETREAT_DATA.qt?.questions || []).forEach((q, i) => {
+      qtQuestions.appendChild(
+        makeNoteCard({
+          section: "qt",
+          id: `q${i + 1}`,
+          question: `${i + 1}. ${q}`,
+          placeholder: "내 답변을 적어보세요.",
+        })
+      );
+    });
+  }
 }
 
 function renderPraise() {
@@ -432,7 +466,7 @@ function importNotes(file) {
 }
 
 function resetNotes() {
-  const ok = confirm("이 기기에 저장된 Q&A/QT 기록을 모두 삭제할까요?");
+  const ok = confirm("이 기기에 저장된 QT 기록을 모두 삭제할까요?");
   if (!ok) return;
 
   const prefix = `${RETREAT_DATA.storagePrefix}:`;
@@ -451,7 +485,7 @@ btnReset?.addEventListener("click", resetNotes);
 importFile?.addEventListener("change", (e) => {
   const file = e.target.files?.[0];
   if (file) importNotes(file);
-  e.target.value = ""; // same file re-import 가능
+  e.target.value = "";
 });
 
 // -------------------------------
@@ -509,7 +543,6 @@ viewerRail?.addEventListener("scroll", () => {
 
 viewerCloseBg?.addEventListener("click", closeViewer);
 viewerCloseBtn?.addEventListener("click", closeViewer);
-
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeViewer();
 });
@@ -537,10 +570,9 @@ window.addEventListener("load", () => {
 
   renderHome();
   renderSchedule();
-  renderSermon();
-  renderQA();
-  renderQT();
+  renderWorship();
   renderPraise();
+  renderQT();
 
   route();
   initScrollMotion();
