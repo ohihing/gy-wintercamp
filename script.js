@@ -10,7 +10,6 @@ const RETREAT_DATA = {
   storagePrefix: "gy-retreatbook-2026-winter",
 
   homeTitle: "2026 동계수련회",
-  homeBadge: "금촌교회 청년부",
 
   schedule: [
     {
@@ -123,7 +122,6 @@ const topbar = document.querySelector(".js-topbar");
 
 // home
 const retreatTitle = document.getElementById("retreatTitle");
-const retreatBadge = document.getElementById("retreatBadge");
 
 // schedule
 const scheduleWrap = document.getElementById("scheduleWrap");
@@ -144,7 +142,7 @@ const viewerCloseBtn = document.getElementById("viewerCloseBtn");
 
 // qt
 const qtTitle = document.getElementById("qtTitle");
-const qtRef = document.getElementById("qtRef");
+const qtSummary = document.getElementById("qtSummary");
 const qtVerses = document.getElementById("qtVerses");
 const qtQuestions = document.getElementById("qtQuestions");
 
@@ -275,7 +273,6 @@ function nowStamp() {
 // -------------------------------
 function renderHome() {
   if (retreatTitle) retreatTitle.textContent = RETREAT_DATA.homeTitle || "동계수련회";
-  if (retreatBadge) retreatBadge.textContent = RETREAT_DATA.homeBadge || "";
 }
 
 function renderSchedule() {
@@ -314,14 +311,14 @@ function renderWorship() {
 
     const verseHtml = (svc.verses || []).map(v => `<p>${escapeHTML(v)}</p>`).join("");
 
+    // ✅ (4) summary 텍스트를 '본문 펼치기' → '성경구절(ref)'로 대체
     panel.innerHTML = `
       <div class="panel__title">${escapeHTML(svc.label || "예배")}</div>
       <div class="panel__body">
         <div class="quoteTitle">"${escapeHTML(svc.sermonTitle || "")}"</div>
-        <div class="refLine">${escapeHTML(svc.ref || "")}</div>
 
         <details class="accordion section-mt-sm">
-          <summary>본문 펼치기</summary>
+          <summary>${escapeHTML(svc.ref || "본문")}</summary>
           <div class="verseBlock">
             ${verseHtml}
           </div>
@@ -368,7 +365,9 @@ function makeNoteCard({ section, id, question, placeholder }) {
 
 function renderQT() {
   if (qtTitle) qtTitle.textContent = RETREAT_DATA.qt?.title || "QT";
-  if (qtRef) qtRef.textContent = RETREAT_DATA.qt?.ref || "";
+
+  // ✅ (4) QT summary를 구절로 표시
+  if (qtSummary) qtSummary.textContent = RETREAT_DATA.qt?.ref || "본문";
 
   if (qtVerses) {
     qtVerses.innerHTML = (RETREAT_DATA.qt?.verses || [])
@@ -489,9 +488,10 @@ importFile?.addEventListener("change", (e) => {
 });
 
 // -------------------------------
-// Fullscreen viewer (좌우 넘기기)
+// Fullscreen viewer (쫀쫀한 스냅 + 짤림 방지)
 // -------------------------------
 let viewerFiles = [];
+let snapTimer = null;
 
 function openViewer(startIndex = 0) {
   viewerFiles = (RETREAT_DATA.praiseFiles || []).slice(0, 20);
@@ -510,12 +510,13 @@ function openViewer(startIndex = 0) {
   viewer.setAttribute("aria-hidden", "false");
   document.body.classList.add("is-locked");
 
+  // 초기 위치
   updateViewerCounter(startIndex);
 
   setTimeout(() => {
-    const target = viewerRail.children[startIndex];
-    target?.scrollIntoView({ behavior: "instant", inline: "start", block: "nearest" });
-  }, 50);
+    const w = viewerRail.clientWidth || 1;
+    viewerRail.scrollTo({ left: startIndex * w, behavior: "auto" });
+  }, 30);
 }
 
 function closeViewer() {
@@ -530,6 +531,19 @@ function updateViewerCounter(index) {
   viewerCounter.textContent = `${index + 1} / ${viewerFiles.length}`;
 }
 
+function snapToNearest() {
+  if (!viewerRail) return;
+  const w = viewerRail.clientWidth || 1;
+  const idx = Math.round(viewerRail.scrollLeft / w);
+  const safe = Math.max(0, Math.min(viewerFiles.length - 1, idx));
+
+  viewerRail.scrollTo({
+    left: safe * w,
+    behavior: prefersReduced ? "auto" : "smooth",
+  });
+  updateViewerCounter(safe);
+}
+
 let rafId = null;
 viewerRail?.addEventListener("scroll", () => {
   if (rafId) cancelAnimationFrame(rafId);
@@ -539,6 +553,10 @@ viewerRail?.addEventListener("scroll", () => {
     const safe = Math.max(0, Math.min(viewerFiles.length - 1, idx));
     updateViewerCounter(safe);
   });
+
+  // ✅ (5) 스크롤 끝나면 가장 가까운 슬라이드로 '쫀쫀' 스냅
+  if (snapTimer) clearTimeout(snapTimer);
+  snapTimer = setTimeout(snapToNearest, 120);
 });
 
 viewerCloseBg?.addEventListener("click", closeViewer);
